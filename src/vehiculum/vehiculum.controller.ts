@@ -6,16 +6,20 @@ import {
   Patch,
   Param,
   Delete,
+  HttpStatus,
+  HttpCode,
 } from '@nestjs/common';
 import { VehiculumService } from './vehiculum.service';
 import { CreateVehiculumDto } from './dto/create-vehiculum.dto';
 import { UpdateVehiculumDto } from './dto/update-vehiculum.dto';
+import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id.pipe';
 
 @Controller('vehiculum/api')
 export class VehiculumController {
   constructor(private readonly vehiculumService: VehiculumService) {}
 
   @Post()
+  @HttpCode(HttpStatus.OK)
   create(@Body() createVehiculumDto: CreateVehiculumDto) {
     return this.vehiculumService.create(createVehiculumDto);
   }
@@ -25,21 +29,21 @@ export class VehiculumController {
     return this.vehiculumService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.vehiculumService.findOne(+id);
+  @Get(':term')
+  findOne(@Param('term') term: string) {
+    return this.vehiculumService.findOne(term);
   }
 
-  @Patch(':id')
+  @Patch(':term')
   update(
-    @Param('id') id: string,
+    @Param('term') term: string,
     @Body() updateVehiculumDto: UpdateVehiculumDto,
   ) {
-    return this.vehiculumService.update(+id, updateVehiculumDto);
+    return this.vehiculumService.update(term, updateVehiculumDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vehiculumService.remove(+id);
+  remove(@Param('id', ParseMongoIdPipe) id: string) {
+    return this.vehiculumService.remove(id);
   }
 }
