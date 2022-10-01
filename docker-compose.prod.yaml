@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  vehiculumapp:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vehiculum-docker
+    container_name: vehiculumapp
+    restart: always
+    ports:
+      - '${PORT}:${PORT}'
+    # working_dir: /var/www/vehiculum
+    environment:
+      MONGODB: ${MONGODB}
+      PORT: ${PORT}
+    # volumes:
+    #   - ./:/var/www/vehiculum
+
+  db:
+    image: mongo:5
+    container_name: mongo-v
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: vehiculum
+    volumes:
+      - ./mongo:/data/db
