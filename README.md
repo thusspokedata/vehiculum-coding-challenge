@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="100" alt="Nest Logo" /></a>
 </p>
 
-# VEHICULUM | Coding-Challenge
+# VEHICULUM | Coding-Challenge | Serve app via NodeJS Server
 
 ## Steps
 
@@ -25,7 +25,17 @@ npm i -g @nestjs/cli
 docker-compose up -d
 ```
 
-## Used Stack
+5. Start NestJs:
+
+```bash
+yarn start:dev
+```
+
+6. To create the database with the seed on Postman do a GET request to:
+
+   http://localhost:3001/seed
+
+## Used Stack
 
 - MongoDB
 - NestJs

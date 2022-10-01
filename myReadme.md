@@ -6,6 +6,7 @@ nest g mo common
 nest g pi common/pipes/parseMongoId --no-spec
 nest g res seed --no-spec
 yarn add axios
+yarn add joi
 
 g = generate
 res = resource
