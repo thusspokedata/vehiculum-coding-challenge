@@ -4,6 +4,7 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/mongoose';
 import { isValidObjectId, Model } from 'mongoose';
 import { CreateVehiculumDto } from './dto/create-vehiculum.dto';
@@ -15,6 +16,7 @@ export class VehiculumService {
   constructor(
     @InjectModel(Vehiculum.name)
     private readonly vehiculumModel: Model<Vehiculum>,
+    private readonly configService: ConfigService,
   ) {}
   async create(createVehiculumDto: CreateVehiculumDto) {
     try {

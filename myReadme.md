@@ -13,5 +13,3 @@ pi = pipe
 mo = module
 --no-spect = no tests files
 </pre>
-
-the function of the controller is to listen and send response.
