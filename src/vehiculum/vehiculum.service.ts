@@ -26,7 +26,7 @@ export class VehiculumService {
   }
 
   findAll() {
-    return `This action returns all vehiculum`;
+    return this.vehiculumModel.find();
   }
 
   async findOne(term: string) {

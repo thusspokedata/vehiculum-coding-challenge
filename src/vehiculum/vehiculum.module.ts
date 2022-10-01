@@ -15,5 +15,6 @@ import { Vehiculum, VehiculumSchema } from './entities/vehiculum.entity';
       },
     ]),
   ],
+  exports: [MongooseModule],
 })
 export class VehiculumModule {}
