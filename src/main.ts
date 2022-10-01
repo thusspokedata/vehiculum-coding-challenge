@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -12,5 +12,6 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
+  console.log('app running on PORT', process.env.PORT);
 }
 bootstrap();

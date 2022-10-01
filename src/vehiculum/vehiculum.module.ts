@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { VehiculumService } from './vehiculum.service';
 import { VehiculumController } from './vehiculum.controller';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -8,6 +9,7 @@ import { Vehiculum, VehiculumSchema } from './entities/vehiculum.entity';
   controllers: [VehiculumController],
   providers: [VehiculumService],
   imports: [
+    ConfigModule,
     MongooseModule.forFeature([
       {
         name: Vehiculum.name,
@@ -15,5 +17,6 @@ import { Vehiculum, VehiculumSchema } from './entities/vehiculum.entity';
       },
     ]),
   ],
+  exports: [MongooseModule],
 })
 export class VehiculumModule {}

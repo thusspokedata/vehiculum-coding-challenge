@@ -14,7 +14,7 @@ import { CreateVehiculumDto } from './dto/create-vehiculum.dto';
 import { UpdateVehiculumDto } from './dto/update-vehiculum.dto';
 import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id.pipe';
 
-@Controller('vehiculum/api')
+@Controller('api/makes')
 export class VehiculumController {
   constructor(private readonly vehiculumService: VehiculumService) {}
 
